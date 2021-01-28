@@ -1,0 +1,156 @@
+@font-face {
+    font-family: bilifont;
+    src: url(../font/bilifont.ttf);
+}
+
+.bilifont {
+    font-family: "bilifont" !important;
+}
+
+.nav {
+    position: relative;
+    background: #fff;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 56px;
+    box-sizing: border-box;
+}
+
+.nav-content {
+    padding: 10px 24px;
+    line-height: 30px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.nav-content .nav-link-main {
+    display: flex;
+    line-height: 32px;
+    white-space: nowrap;
+
+}
+
+.nav-content .bilibili-logo {
+    width: 70px;
+    height: 32px;
+    margin-right: 16px;
+    padding-top: 11px;
+}
+
+.nav-content .bilibili-main {
+    margin: auto 0;
+    display: inline-block;
+}
+
+#nav-search {
+    position: relative;
+    width: 500px;
+    margin: 0 10px;
+
+}
+
+#nav-search-form {
+    background: #F4F4F4;
+    border: 1px solid #E7E7E7;
+    border-radius: 2px;
+    padding: 0 38px 0 16px;
+}
+
+#nav-search-form .nav-search-keywords {
+    border: none;
+    width: 100%;
+    height: 32px;
+    background-color: transparent;
+    font-size: 14px;
+    color: #999;
+}
+
+#nav-search-form .nav-search-keywords:focus {
+    color: black;
+}
+
+#nav-search-form .nav-search-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 48px;
+    height: 33px;
+    background: #E7E7E7;
+    cursor: pointer;
+}
+
+#nav-search-form .nav-search-submit {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    background: none;
+    border: none;
+    color: #505050;
+    font-size: 16px;
+    line-height: 20px;
+
+}
+
+#nav-search-form .nav-search-submit::before {
+    content: '\E72C'
+}
+
+#nav-search-form .nav-search-btn:hover .nav-search-submit {
+    color: #00a1d6;
+}
+
+#nav-user-center .nav-userCenter-ul {
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+
+}
+
+#nav-user-center li {
+    margin-left: 12px;
+}
+
+#nav-user-center .user-login {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#nav-user-center .logout-photo {
+    height: 31px;
+    width: 31px;
+    vertical-align: middle;
+    border: 1px solid #C0C0C0;
+    border-radius: 16px;
+    margin-right: 5px;
+}
+
+#nav-user-center .user-contribute {
+    width: 100px;
+    height: 36px;
+    background: #FB7299;
+    color: white;
+    text-align: center;
+    line-height: 36px;
+    cursor: pointer;
+
+}
+
+.nav .nav-content .nav-link {
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.nav .nav-content .nav-link .nav-link-li {
+    margin-right: 12px;
+}
+
+.nav .nav-content .nav-link .bili-download-app::before {
+    content: "\E72D";
+    color: #00a1d6;
+    font-size: 18px;
+}

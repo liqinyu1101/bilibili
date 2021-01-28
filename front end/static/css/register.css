@@ -1,0 +1,192 @@
+@font-face {
+    font-family: bili-footer-font;
+    src: url(../font/bili-footer-font.ttf);
+}
+
+@font-face {
+    font-family: bilifont;
+    src: url(../font/bilifont.ttf);
+}
+
+
+.banner {
+    text-align: center;
+    background-color: #00a1d8;
+    height: 86px;
+}
+
+.banner_line {
+    width: 980px;
+    height: 28px;
+    margin: 20px auto;
+    border-bottom: 1px solid #ddd;
+    text-align: center
+}
+
+.banner_line span {
+    padding: 0 20px;
+    font-size: 38px;
+    background-color: #fff;
+}
+
+.register-box {
+    padding: 60px 0;
+
+}
+
+#register-form {
+    margin-top: 24px;
+}
+
+#register-form .form-box {
+    width: 420px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.form-register-input::placeholder,
+.register-phone::placeholder {
+    color: #c0c4cc;
+}
+
+#register-form .register-hidden-group {
+    width: 420px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+#register-form input {
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    width: 420px;
+    padding: 0 15px;
+}
+
+#register-form .username-box,
+#register-form .password-box,
+#register-form .phone-box {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#register-form .username-box #fm-username:hover,
+#register-form .password-box #fm-password:hover {
+    border-color: #c0c4cc;
+}
+
+#register-form .username-box #fm-username:focus,
+#register-form .password-box #fm-password:focus {
+    border-color: #00a1d6;
+}
+
+#register-form .username-box #return-message,
+#register-form .password-box .judge-password {
+    position: absolute;
+    right: -20px;
+    top: 13px;
+    color: #f45d90;
+    transform: translate3d(100%, 0, 0);
+    font-size: 12px
+}
+
+#register-form .phone-box .judge-phone {
+    position: absolute;
+    right: -20px;
+    top: 0px;
+    color: #f45d90;
+    transform: translate3d(100%, 0, 0);
+    font-size: 12px
+}
+
+#register-form .fm-register {
+    display: block;
+    position: relative;
+    right: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 7px 16px;
+    float: right;
+}
+
+.phone-box {
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+#register-form .area {
+    position: relative;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: 12px;
+    height: 40px;
+    width: 115px;
+    padding: 0 10px;
+    background: white;
+}
+
+/* 写完才发现iconfont里面有这个图标，我吐了鸭 */
+#register-form .area::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid #c0c4cc;
+    border-bottom: 1px solid #c0c4cc;
+    transform: rotate(45deg);
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#register-form .register-phone {
+
+    width: 300px;
+    height: 40px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#register-form .fm-register .fm-checkbox {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 3px;
+    width: 15px;
+    height: 15px;
+    background-image: url(../image/uncheckedbox.png);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 50%;
+    cursor: pointer;
+}
+
+#register-form .fm-register .fm-checkbox input {
+    display: none;
+}
+
+#register-form .fm-submit {
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+    border-color: #d9d9d9;
+    color: 'rgba(0,0,0,.25)';
+
+}
+
+#register-form #pc-direct-register {
+    line-height: 40px;
+    text-align: right;
+    width: 420px;
+    height: 40px;
+    margin: 0 auto;
+}

@@ -1,0 +1,19 @@
+.banner {
+    text-align: center;
+    background-color: #00a1d8;
+    height: 86px;
+}
+
+.banner_line {
+    width: 980px;
+    height: 28px;
+    margin: 20px auto;
+    border-bottom: 1px solid #ddd;
+    text-align: center
+}
+
+.banner_line span {
+    padding: 0 20px;
+    font-size: 38px;
+    background-color: #fff;
+}
