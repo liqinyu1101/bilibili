@@ -4,12 +4,99 @@
     font-family: "PingFang SC,Hiragino Sans GB,Microsoft YaHei,sans-serif";
 }
 
+
+i,
+em {
+    font-style: normal;
+}
+
 a {
     text-decoration: none;
+    cursor: pointer;
     color: #00a1d6;
-    font-size: 12px;
+    outline: none;
 }
 
 li {
     list-style: none;
+}
+
+input {
+    outline: none;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    margin: 0
+}
+
+@font-face {
+    font-family: bilifont;
+    src: url(../font/bilifont.ttf);
+}
+
+@font-face {
+    font-family: "bcc-iconfont";
+    src: url(../font/bcc-iconfont.ttf) format('truetype')
+}
+
+@font-face {
+    font-family: "iconfont";
+    src: url(../font/iconfont.ttf) format('truetype')
+}
+
+@font-face {
+    font-family: "element-icons";
+    src: url(../font/element-icons.ttf) format('truetype')
+}
+
+@font-face {
+    font-family: "icomoon";
+    src: url(../font/icomoon.ttf) format('truetype')
+}
+
+@font-face {
+    font-family: "fontv";
+    src: url(../font/fontv.ttf) format('truetype')
+}
+
+.bilifont {
+    font-family: "bilifont" !important;
+}
+
+.bcc-iconfont {
+    font-family: "bcc-iconfont" !important;
+    font-style: normal;
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-style: normal;
+}
+
+.element-icons {
+    font-family: "element-icons" !important;
+    font-style: normal;
+}
+
+.icomoon {
+    font-family: "icomoon" !important;
+    font-style: normal;
+}
+
+.fontv {
+    font-family: "fontv" !important;
+    font-style: normal;
 }

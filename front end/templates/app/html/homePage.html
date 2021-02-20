@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <link rel="shortcut icon" href="../../../static/image/favicon.ico">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/base.css">
+    <style>
+        .nav {
+            overflow: hidden;
+            min-width: 1300px;
+            position: absolute;
+            z-index: 1;
+            background: transparent;
+            color: #fff;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+            font-weight: 500;
+        }
+
+        .nav-content {
+            font-size: 16px;
+        }
+
+        .nav .nav-content .nav-link .bili-download-app::before {
+            content: "\E72D";
+            color: #fff;
+            font-size: 18px;
+        }
+
+        #nav-search-form {
+            background: #fff;
+            border: 1px solid hsla(0, 0%, 100%, 0);
+        }
+
+        .nav-content .bilibili-main {
+            display: flex;
+            color: #fff;
+        }
+
+        .zhuzhan::before {
+            content: "\E72B";
+        }
+
+        .zhuzhan {
+            margin-right: 6px;
+            font-size: 18px;
+        }
+
+        .nav-userCenter-ul a {
+            color: #fff;
+        }
+
+        .bili-banner {
+            margin: 0 auto;
+            position: relative;
+            z-index: 0;
+            min-height: 155px;
+            min-width: 999px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .animated-banner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .animated-banner>.layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .layer {
+            display: flex;
+        }
+
+        .taper-line {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(rgba(0, 0, 0, .4), transparent);
+        }
+
+        .b-wrap {
+            width: 1300px;
+        }
+
+        .homepage-logo {
+            position: relative;
+            display: flex;
+        }
+
+        .hp-go {
+            position: absolute;
+            width: 220px;
+            height: 50%;
+            bottom: 10px;
+            z-index: 1;
+        }
+
+        .hp-img {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="internationalHeader">
+        <div class="nav">
+            <div class="nav-content">
+                <div>
+                    <ul class="nav-link">
+                        <li class="nav-link-li nav-link-main">
+                            <a href="homePage.html" class="bilibili-main">
+                                <div class="test bilifont zhuzhan"></div>主站
+                            </a>
+                        </li>
+                        <li class="nav-link-li">番剧</li>
+                        <li class="nav-link-li">游戏中心</li>
+                        <li class="nav-link-li">直播</li>
+                        <li class="nav-link-li">会员购</li>
+                        <li class="nav-link-li">漫画</li>
+                        <li class="nav-link-li">赛事</li>
+                        <li class="bilifont nav-link-li bili-download-app">下载APP</li>
+                    </ul>
+                </div>
+                <div id="nav-search">
+                    <form id="nav-search-form">
+                        <input class="nav-search-keywords" type="text" placeholder="满堂花醉三千客，一剑霜寒十四州。">
+                        <div class="nav-search-btn">
+                            <button class="bilifont nav-search-submit"></button>
+                        </div>
+                    </form>
+                </div>
+                <div id="nav-user-center">
+                    <ul class="nav-userCenter-ul">
+                        <li class="user-login">
+                            <a href="login.html" class="user-login">
+                                <img class="logout-photo" src="../../../static/image/bili-head-photo.jpg">
+                                登录
+                            </a>
+                        </li>
+                        <li><a href="register.html">注册</a></li>
+                        <li>
+                            <div class="user-contribute">投稿</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bili-banner">
+            <div class="animated-banner">
+                <div class="layer">
+                    <img src="../../../static/image/bg1.jpg" class="movePicture"
+                        style="transform: scale(1) translate(0px) rotate(0deg); filter: blur(0px); opacity: 1;"
+                        width="2016" height="155">
+                </div>
+                <div class="layer">
+                    <img src="../../../static/image/bg2.jpg" class="movePicture"
+                        style="transform: scale(1) translate(0px) rotate(0deg); filter: blur(0px); opacity: 1;"
+                        width="2016" height="155">
+                </div>
+                <div class="layer">
+                    <img src="../../../static/image/bg3.png" class="movePicture"
+                        style="transform: scale(1) translate(40px, 16px) rotate(10deg); filter: blur(0px); opacity: 1;"
+                        width="2400" height="184">
+                </div>
+                <div class="layer">
+                    <video src="../../../static/video/bg4.webm" class="movePicture"
+                        style="object-fit:cover;transform: scale(1) translate(0px) rotate(0deg); filter: blur(0px); opacity: 0;"
+                        width="2016" height="155">
+                </div>
+                <div class="layer">
+                    <img src="../../../static/image/bg5.png" class="movePicture"
+                        style="transform: scale(1) translate(0px) rotate(0deg); filter: blur(0px); opacity: 0;"
+                        width="2016" height="155">
+                </div>
+                <div class="layer">
+                    <img src="../../../static/image/bg6.png" class="movePicture"
+                        style="transform: scale(1) translate(0px) rotate(0deg); filter: blur(2px); opacity: 1;"
+                        width="2016" height="155">
+                </div>
+                <div class="layer">
+                    <img src="../../../static/image/bg7.png" class="movePicture"
+                        style="transform: scale(1) translate(0px) rotate(0deg); filter: blur(2px); opacity: 1;"
+                        width="2016" height="155">
+                </div>
+                <div class="layer">
+                    <img src="../../../static/image/bg8.png" class="movePicture"
+                        style="transform: scale(1) translate(0px) rotate(0deg); filter: blur(5px); opacity: 0;"
+                        width="2016" height="155">
+                </div>
+            </div>
+            <div class="taper-line"></div>
+            <div class="homepage-logo b-wrap">
+                <a class="hp-go" href="homePage.html">
+                    <img class="hp-img" src="../../../static/image/homepage.png">
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        let animatedBanner = document.getElementsByClassName("internationalHeader")[0];
+        let movePicture = document.getElementsByClassName("movePicture");
+
+        animatedBanner.addEventListener('mouseenter', function (e) {
+            a = e.pageX;
+        })
+        animatedBanner.addEventListener('mousemove', function (e) {
+            let b = e.pageX;
+            let x = a - b;
+            let y = x / 1695 * 100;
+            let z = x / 1695 * 135;
+            //根据鼠标位移移动图片
+            movePicture[0].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[1].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[3].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[4].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[2].style.transform = "translate(" + (40 + x / 1695 * 280) + "px," + (10 -
+                x / 1695 * 6) + "px) rotate(" + (10 - x / 500) + "deg)"
+            movePicture[5].style.transform = "translateX(" + (0 + z) + "px)"
+            movePicture[6].style.transform = "translateX(" + (0 + z) + "px)"
+            movePicture[7].style.transform = "translateX(" + (0 + z) + "px)"
+            //透明度设置
+            if (x >= 0 && y <= 25) {
+                movePicture[1].style.opacity = 1 - y / 25
+            }
+            if (x > 0 && x < 800) {
+                movePicture[2].style.opacity = 1 - x / 800
+            }
+            if (x <= 0 && y >= -33.4) {
+                movePicture[3].style.opacity = 0 - y / 33.4
+            }
+            if (x <= 0 && y <= 67.2) {
+                movePicture[4].style.opacity = 0 - y / 67.2
+            }
+            if (z >= 0 && z <= 45) {
+                movePicture[6].style.opacity = 1 - z / 45
+            }
+            if (z <= 0 && z >= -45) {
+                movePicture[7].style.opacity = 0 - z / 45
+            }
+        })
+        animatedBanner.removeEventListener('mouseenter', function (e) {
+            a = e.pageX
+        })
+        animatedBanner.removeEventListener('mousemove', function (e) {
+            let b = e.pageX;
+            let x = a - b;
+            let y = x / 1695 * 100;
+            let z = x / 1695 * 135;
+            //根据鼠标位移移动图片
+            movePicture[0].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[1].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[3].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[4].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[2].style.transform = "translate(" + (40 + x / 1695 * 280) + "px," + (10 -
+                x / 1695 * 6) + "px)"
+            movePicture[5].style.transform = "translateX(" + (0 + z) + "px)"
+            movePicture[6].style.transform = "translateX(" + (0 + z) + "px)"
+            movePicture[7].style.transform = "translateX(" + (0 + z) + "px)"
+            //旋转角度设置
+            movePicture[2].style.rotate = "(" + (10 - x / 1000) + "deg)"
+            //透明度设置
+            if (x >= 0 && y <= 25) {
+                movePicture[1].style.opacity = 1 - y / 25
+            }
+            if (x > 0 && x < 800) {
+                movePicture[2].style.opacity = 1 - x / 800
+            }
+            if (x <= 0 && y >= -33.4) {
+                movePicture[3].style.opacity = 0 - y / 33.4
+            }
+            if (x <= 0 && y <= 67.2) {
+                movePicture[4].style.opacity = 0 - y / 67.2
+            }
+            if (z >= 0 && z <= 45) {
+                movePicture[6].style.opacity = 1 - z / 45
+            }
+            if (z <= 0 && z >= -45) {
+                movePicture[7].style.opacity = 0 - z / 45
+            }
+        })
+        animatedBanner.addEventListener('mouseleave', function (e) {
+            let x = 0,
+                y = 0,
+                z = 0;
+            movePicture[0].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[1].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[3].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[4].style.transform = "translateX(" + (0 + y) + "px)"
+            movePicture[2].style.transform = "translate(" + (40 + x / 1695 * 280) + "px," + (10 -
+                x / 1695 * 6) + "px) rotate(" + (10 - x / 100) + "deg)"
+            movePicture[5].style.transform = "translateX(" + (0 + z) + "px)"
+            movePicture[6].style.transform = "translateX(" + (0 + z) + "px)"
+            movePicture[7].style.transform = "translateX(" + (0 + z) + "px)"
+            //透明度设置
+            if (x >= 0 && y <= 25) {
+                movePicture[1].style.opacity = 1 - y / 25
+            }
+            if (x > 0 && x < 800) {
+                movePicture[2].style.opacity = 1 - x / 800
+            }
+            if (x <= 0 && y >= -33.4) {
+                movePicture[3].style.opacity = 0 - y / 33.4
+            }
+            if (x <= 0 && y <= 67.2) {
+                movePicture[4].style.opacity = 0 - y / 67.2
+            }
+            if (z >= 0 && z <= 45) {
+                movePicture[6].style.opacity = 1 - z / 45
+            }
+            if (z <= 0 && z >= -45) {
+                movePicture[7].style.opacity = 0 - z / 45
+            }
+        })
+    </script>
+</body>
+
+</html>

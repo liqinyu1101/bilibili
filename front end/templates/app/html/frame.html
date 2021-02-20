@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创作中心 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~</title>
+    <link rel="shortcut icon" href="../../../static/image/favicon.ico">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../../static/css/base.css">
+    <style>
+        body {
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .centerHeader {
+            position: fixed;
+            min-width: 900px;
+            overflow: hidden;
+            z-index: 5;
+            top: 0;
+            right: 0;
+            left: 0;
+            box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .05);
+        }
+
+        .header {
+            display: flex;
+            height: 60px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px 0 32px;
+            background-color: #fff;
+
+        }
+
+        .left-part {
+            display: flex;
+            align-items: center;
+        }
+
+        .center-logo {
+            font-size: 26px;
+            color: #00a1d6;
+            cursor: pointer;
+        }
+
+        .center-logo::before {
+            content: "\e661";
+        }
+
+        .hp-path {
+            margin-left: 32px;
+            font-size: 14px;
+            color: #757575;
+        }
+
+        .hp-path .zhuzhan::before {
+            content: "\e65e";
+            font-size: 16px;
+        }
+
+        .zhuzhan {
+            margin-right: 6px;
+        }
+
+        .right-part {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-controller {
+            display: flex;
+            color: #757575;
+            align-items: center;
+        }
+
+        .logout-photo {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #ccc;
+            border: 1px solid #f4f4f4;
+            margin-right: 15px;
+        }
+
+        .line-divid {
+            width: 1px;
+            height: 20px;
+            background: #e7e7e7;
+            margin-right: 32px;
+        }
+
+        .bcc-icon-message::before {
+            content: '\e66b'
+        }
+
+        .bcc-icon-message {
+            font-size: 20px;
+            color: #757575;
+        }
+
+        .upload-wrap {
+            min-width: 1000px;
+            min-height: 100%;
+            overflow: hidden;
+            background-color: #fff;
+            margin-top: 80px;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .upload-center {
+            display: flex;
+            border-bottom: 1px solid #e7e7e7;
+        }
+
+        .upload-video {
+            display: block;
+            font-weight: bolder;
+            font-size: 16px;
+            margin-left: 60px;
+            padding-bottom: 16px;
+            color: #00a1d6;
+            border-bottom: 3px solid #00a1d6;
+            cursor: pointer;
+        }
+
+        .myVideo {
+            display: block;
+            font-weight: bolder;
+            font-size: 16px;
+            margin-left: 30px;
+            padding-bottom: 16px;
+            color: #505050;
+            cursor: pointer;
+        }
+
+        .video-box {
+            display: flex;
+            flex-flow: column;
+            text-align: center;
+            align-items: center;
+        }
+
+        .welcome {
+            margin-top: 16px;
+            width: 830px;
+            height: 69px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .bili23 {
+            width: 830px;
+        }
+
+        .part {
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+
+        .upload-part {
+            padding-top: 6px;
+            text-align: center;
+            position: relative;
+
+        }
+
+        .homeDrop {
+            border: 2px dashed #e7e7e7;
+            width: 830px;
+            height: 284px;
+            border-radius: 10px;
+            margin: 14px 0 20px;
+            padding-top: 66px;
+            box-sizing: border-box;
+        }
+
+        .icon-upload {
+            font-size: 40px;
+            color: #999;
+        }
+
+        .icon-upload::before {
+            content: "\E6F8";
+        }
+
+        .upload-hint {
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        .upload-btn {
+            position: relative;
+            margin: 30px auto 0;
+            width: 200px;
+            height: 44px;
+            cursor: pointer;
+            background: #00a1d6;
+            border-radius: 4px;
+            white-space: nowrap;
+            font-size: 0;
+            transition: background-color .3s ease;
+        }
+
+        .upload-btn:hover {
+            background-color: #1cade3
+        }
+
+        .upload-btn-title {
+            font-size: 16px;
+            color: #fff;
+            line-height: 44px;
+        }
+
+        .upload-reminder {
+            background: rgba(0, 161, 214, .05);
+            width: 830px;
+            height: 88px;
+            margin: 5px auto 0;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fontv-video-huaban::before {
+            content: "\E66E"
+        }
+
+        .fontv-video-huaban {
+            font-size: 30px;
+            width: 30px;
+            height: 30px;
+            color: #00a1d6;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: 60px;
+        }
+
+        .reminder-box {
+            text-align: left;
+            margin-left: 120px;
+            margin-top: 22px;
+        }
+
+        .reminder-box .reminder-title {
+            margin-bottom: 3px;
+            font-size: 16px;
+            color: #212121;
+            font-weight: 700;
+            line-height: 22px
+        }
+
+        .reminder-box .reminder-detail {
+            font-size: 12px;
+            color: #505050;
+        }
+
+        .upload-step2-container {
+            width: 830px;
+            margin: 0 auto;
+        }
+
+        .upload-step2-container .file-title {
+            display: flex;
+            margin-top: 20px;
+            height: 23px;
+            box-sizing: border-box;
+            align-items: center;
+        }
+
+        .upload-step2-container .file-title h1 {
+            font-size: 20px;
+            color: #222;
+            margin-right: 10px;
+        }
+
+        .upload-step2-container .file-title .info {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .file-list-item {
+            display: flex;
+            align-items: center;
+            padding: 24px 0;
+            margin: 16px 0 13px;
+        }
+
+        .file-list-item .file-list-item-icon {
+            width: 36px;
+            height: 24px;
+            background: url(../../../static/image/video.png) no-repeat;
+            background-size: 100% 100%;
+            margin-right: 24px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .file-list-item .file-list-item-icon span {
+            display: inline-block;
+            width: 27px;
+            text-align: center;
+            line-height: 23px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="centerHeader">
+            <div class="header">
+                <div class="left-part">
+                    <i class="center-logo bcc-iconfont"></i>
+                    <a class="hp-path" href="homePage.html" target="blank">
+                        <i class="bcc-iconfont zhuzhan"></i>主站
+                    </a>
+                </div>
+                <div class="right-part">
+                    <div class="logout-photo">
+                        <a class="user-controller" href="user.html">
+                            <img class="logout-photo" src="../../../static/image/bili-head-photo.jpg">
+                        </a>
+                    </div>
+                    <div class="line-divid"></div>
+                    <div class="acc-infom">
+                        <a href="reply.html" class="reply-infom">
+                            <i class="bcc-iconfont bcc-icon-message"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="upload-wrap">
+            <div class="upload-center">
+                <span class="upload-video choice">
+                    视频投稿
+                </span>
+            </div>
+            <div class="upload-step1-container" style="display: none;">
+                <div class="video-box">
+                    <div class="welcome ">
+                        <img class="bili23" src="../../../static/image/welcome.jpg">
+                    </div>
+                    <div class="upload-part">
+                        <div class="homeDrop">
+                            <i class="fontv icon-upload"></i>
+                            <div class="upload-hint">拖拽视频到此处也可上传</div>
+                            <div class="upload-btn">
+                                <div class="upload-btn-title" onclick="F_Open_dialog()">
+                                    上传视频
+                                </div>
+                                <input type="file" id="btn_file" style="display:none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-reminder">
+                    <i class="fontv fontv-video-huaban"></i>
+                    <div class="reminder-box">
+                        <p class="reminder-title">注意事项</p>
+                        <p class="reminder-detail">上传视频，即表示您已同意 哔哩哔哩使用协议 与 哔哩哔哩创作公约 ，请勿上传色情，反动等违法视频。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="upload-step2-container" style="display: block;">
+                <div class="file-list">
+                    <div class="file-title">
+                        <h1>文件上传</h1>
+                        <p class="info">（推荐采用mp4、flv格式,可有效缩短审核转码耗时）</p>
+                    </div>
+                    <div class="file-list-item">
+                        <div class="file-list-item-icon">
+                            <span>P1</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        //点击标签上传
+        function F_Open_dialog() {
+            document.getElementById("btn_file").click();
+        }
+        //拖拽上传文件
+        //1.禁止浏览器打开文件行为    
+        document.addEventListener("drop", function (e) { //拖离     
+            e.preventDefault();
+        })
+        document.addEventListener("dragleave", function (e) { //拖后放     
+            e.preventDefault();
+        })
+        document.addEventListener("dragenter", function (e) { //拖进    
+            e.preventDefault();
+        })
+        document.addEventListener("dragover", function (e) { //拖来拖去      
+            e.preventDefault();
+        })
+        let box = document.querySelector(".homeDrop")
+        let video1 = document.querySelector(".upload-step1-container")
+        let video2 = document.querySelector(".upload-v2-container")
+        box.addEventListener("drop", function (e) {
+            let fileList = e.dataTransfer.files; //获取文件对象      
+            console.log(fileList);
+            if (fileList !== null) {
+                video1.style.display = "none";
+                video2.style.display = "block";
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -8,6 +8,10 @@
     src: url(../font/bilifont.ttf);
 }
 
+a {
+    color: #00a1d6;
+    font-size: 12px;
+}
 
 .banner {
     text-align: center;
@@ -111,7 +115,7 @@
     right: 15px;
     font-size: 12px;
     cursor: pointer;
-    margin: 7px 16px;
+    margin: 10px 15px;
     float: right;
 }
 
