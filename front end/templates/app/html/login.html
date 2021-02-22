@@ -71,11 +71,29 @@
             margin-top: 50px;
         }
 
-        .login-right-box .login-bypassword {
+        .login-method-box {
+            display: flex;
+        }
+
+        .login-right-box #login-byphone {
             font-size: 14px;
-            color: #02a7de;
             cursor: pointer;
             margin-bottom: 12px;
+            margin-right: 20px;
+        }
+
+        .login-right-box #login-byemail {
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        .checked {
+            color: #02a7de;
+        }
+
+        .unchecked {
+            color: #555;
         }
 
         .login-form {
@@ -292,7 +310,10 @@
         <div class="line"></div>
         <div class="login-right">
             <div class="login-right-box">
-                <div class="login-bypassword">密码登录</div>
+                <div class="login-method-box">
+                    <div class="checked" id="login-byphone">手机登录</div>
+                    <div class="unchecked" id="login-byemail">邮箱登录</div>
+                </div>
                 <div class="login-form">
                     <div class="status-box">
                         <input class="accountNumber" type="text" placeholder="你的手机号/邮箱">
@@ -346,11 +367,9 @@
         let i = 0;
         frontBox.addEventListener('click', function (e) {
             if (i % 2 == 0) {
-                console.log(i);
                 checkbox.style.backgroundImage = "url(../../../static/image/checkedbox.jpg)";
                 i = 1;
             } else {
-                console.log(i);
                 checkbox.style.backgroundImage = "url(../../../static/image/uncheckedbox.png)";
                 i = 0;
             }
@@ -384,7 +403,21 @@
                 password.style.borderColor = "#ddd"
             }
         })
-        //3.发送登录请求
+        //3.选择登录方式
+        let login_phone = document.querySelector("#login-byphone")
+        let login_email = document.querySelector("#login-byemail")
+        let flag = 0;
+        login_phone.addEventListener('click', function () {
+            flag = 0;
+            login_phone.className = "checked"
+            login_email.className = "unchecked"
+        })
+        login_email.addEventListener('click', function () {
+            flag = 1;
+            login_phone.className = "unchecked"
+            login_email.className = "checked"
+        })
+        //4.发送登录请求
         let loginBtn = document.querySelector(".btn-login");
         loginBtn.addEventListener('click', function () {
             if (accountNumber.value.length == 0) {
@@ -398,8 +431,12 @@
                 password.style.borderColor = "#f66495"
             }
             if (accountNumber.value.length !== 0 && password.value.length !== 0) {
-                let params = "phone=" + accountNumber.value + "&password=" + password.value;
-                console.log(params);
+                let params = ""
+                if (flag == 0) {
+                    params = "phone=" + accountNumber.value + "&password=" + password.value;
+                } else if (flag == 1) {
+                    params = "email=" + accountNumber.value + "&password=" + password.value;
+                }
                 let xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://118.178.190.150:80/bilibili/login');
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -408,11 +445,48 @@
                     const res = xhr.responseText;
                     console.log(res);
                     console.log("请求成功");
-                    console.log(document.cookie);
+                    if (frontBox.checked) {
+                        setCookie('accountNumber', accountNumber.value, 7); //保存帐号到cookie，有效期7天
+                        setCookie('password', password.value, 7); //保存密码到cookie，有效期7天
+                    } else {
+                        delCookie('accountNumber');
+                        delCookie('password');
+                    }
                 }
 
             }
         })
+        //保存账户密码
+        function setCookie(name, value, day) {
+            var date = new Date();
+            date.setDate(date.getDate() + day);
+            document.cookie = name + '=' + value + ';expires=' + date;
+        };
+
+        //获取cookie
+        function getCookie(name) {
+            var reg = RegExp(name + '=([^;]+)');
+            var arr = document.cookie.match(reg);
+            if (arr) {
+                return arr[1];
+            } else {
+                return '';
+            }
+        };
+
+        //删除cookie
+        function delCookie(name) {
+            setCookie(name, null, -1);
+        }
+        //页面初始化载入账户密码
+        window.onload = function () {
+            if (getCookie('accountNumber') && getCookie('password')) {
+                accountNumber.value = getCookie('username');
+                pswd.value = getCookie('password');
+                orember.checked = true;
+            }
+
+        }
     </script>
 </body>
 

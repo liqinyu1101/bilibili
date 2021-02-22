@@ -123,6 +123,7 @@ a {
     height: 40px;
     line-height: 40px;
     vertical-align: middle;
+    box-sizing: border-box;
 }
 
 #register-form .area {

@@ -64,3 +64,26 @@ phoneNumber.oninput = function () {
 }
 //检验用户名是否重复
 //url处填写后端网址
+//点击确定发送数据
+register_submit.addEventListener('click', function () {
+    let username = fm_username.value
+    let password = fm_password.value
+    let phone = phoneNumber.value
+    if (username && password && phone && i == 1) {
+        fetch("http: //118.178.190.150:80/bilibili/register", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: JSON.stringify({
+                    "username": username,
+                    "password": password,
+                    "phone": phone,
+                })
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+            })
+    }
+})

@@ -51,6 +51,10 @@
             font-size: 18px;
         }
 
+        .nav-user-center {
+            display: flex;
+        }
+
         .nav-userCenter-ul a {
             color: #fff;
         }
@@ -152,7 +156,7 @@
                     </form>
                 </div>
                 <div id="nav-user-center">
-                    <ul class="nav-userCenter-ul">
+                    <div class="nav-userCenter-ul" style="display: flex;">
                         <li class="user-login">
                             <a href="login.html" class="user-login">
                                 <img class="logout-photo" src="../../../static/image/bili-head-photo.jpg">
@@ -161,9 +165,23 @@
                         </li>
                         <li><a href="register.html">注册</a></li>
                         <li>
-                            <div class="user-contribute">投稿</div>
+                            <a href="frame.html" target="_blank">
+                                <div class="user-contribute">投稿</div>
+                            </a>
                         </li>
-                    </ul>
+                    </div>
+                    <div class="nav-userCenter-ul" style="display: none;">
+                        <li class="user-login">
+                            <a href="login.html" class="user-login">
+                                <img class="login-photo" src="../../../static/image/bili-head-photo.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="frame.html" target="_blank">
+                                <div class="user-contribute">投稿</div>
+                            </a>
+                        </li>
+                    </div>
                 </div>
             </div>
         </div>
