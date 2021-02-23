@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 100px;
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <input class="phone" type="text">
+    </br>
+    <input class="password" type="text">
+    <br>
+    <button>submit</button>
+    <script>
+        let phone = document.getElementsByClassName("phone")[0];
+        let password = document.getElementsByClassName("password")[0];
+        let button = document.getElementsByTagName("button")[0];
+        phone.value = 'hello'
+        button.onclick = function () {
+
+            let params = 'phone=' + phone.value + '&password=' + password.value;
+            console.log(params);
+            let xhr = new XMLHttpRequest();
+            //url改成接口网址
+            xhr.open('POST', 'login');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                        res = JSON.parse(xhr.responseText);
+                        console.log(res);
+                        console.log('请求成功');
+                    } else {
+                        console.log('请求失败');
+                    }
+                }
+            }
+            xhr.send(params);
+        }
+    </script>
+</body>
+
+</html>
