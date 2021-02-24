@@ -108,23 +108,20 @@
             let res;
             const box = document.querySelector('.nav-search-keywords');
             let boxValue = box.value;
-            let keywords = 'keywords=' + boxValue;
-
+            bv = window.location.href.split("=")[1];
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://118.178.190.150:80/bilibili/search?keywords=j');
+            xhr.open('GET', 'http://118.178.190.150:80/bilibili/search?keywords=' + keywords);
             xhr.send()
             xhr.onreadystatechange = () => {
                 if (xhr.readyState === 4) {
                     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
                         res = JSON.parse(xhr.responseText);
                         console.log(res);
-                        //获取数据渲染
+                        //获取数据渲染,因为我这没有cookie没法上传文件，所以应该啥也搜不到，我看不到数据格式不知道怎么写
                     };
-
                 }
             }
         }
-
         btn.addEventListener('click', search)
     </script>
 </body>

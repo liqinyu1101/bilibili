@@ -65,6 +65,7 @@ fm_username.addEventListener('blur', function () {
                 return res.clone().json()
             })
             .then(res => {
+                //不知道为啥，无论是什么用户名都返回的0
                 if (res.flag = 0) {
                     return_message.innerHTML = "该用户名已被注册";
                 }
