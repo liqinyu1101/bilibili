@@ -29,7 +29,7 @@ frontBox.addEventListener('click', function () {
     }
 }, true)
 //检查用户写的昵称是否符合规范
-fm_username.oninput = function () {
+fm_username.addEventListener('input', function () {
     let username = this.value;
     let regUser = /^[a-zA-Z0-9\u4e00-\u9fa5-_]{2,10}$/;
     if (username.length == 0) {
@@ -40,8 +40,42 @@ fm_username.oninput = function () {
         return_message.innerHTML = "用户昵称过长";
     } else if (!regUser.test(username)) {
         return_message.innerHTML = "昵称不可包含除-和_以外的特殊字符";
-    } else return_message.innerHTML = "";
-}
+    } else {
+        return_message.innerHTML = "";
+    }
+})
+fm_username.addEventListener('blur', function () {
+    let username = this.value;
+    let regUser = /^[a-zA-Z0-9\u4e00-\u9fa5-_]{2,10}$/;
+    if (username.length == 0) {
+        return_message.innerHTML = "请告诉我你的昵称吧"
+    } else if (username.length < 2) {
+        return_message.innerHTML = "用户昵称过短";
+    } else if (username.length > 10) {
+        return_message.innerHTML = "用户昵称过长";
+    } else if (!regUser.test(username)) {
+        return_message.innerHTML = "昵称不可包含除-和_以外的特殊字符";
+    } else {
+        fetch("http://118.178.190.150:80/bilibili/register/username", {
+                method: 'POST',
+                body: username
+            })
+            .then(res => {
+                a = res.clone().arrayBuffer()
+                return res.clone().json()
+            })
+            .then(res => {
+                if (res.flag = 0) {
+                    return_message.innerHTML = "该用户名已被注册";
+                }
+            })
+            .catch(
+                e => {
+                    return a
+                }
+            )
+    }
+})
 //检查用户写的密码是否符合规范
 fm_password.onblur = function () {
     let password = this.value;
@@ -62,28 +96,63 @@ phoneNumber.oninput = function () {
         judge_phone.innerHTML = "";
     }
 }
+phoneNumber.onblur = function () {
+    let phone = this.value;
+    let phoneReg = /^1[0-9]{10}$/;
+    if (!phoneReg.test(phone)) {
+        judge_phone.innerHTML = "请输入正确的手机号码";
+    } else {
+        judge_phone.innerHTML = "";
+        fetch("http://118.178.190.150:80/bilibili/register/phone", {
+                method: 'POST',
+                body: phone
+            })
+            .then(res => {
+                a = res.clone().arrayBuffer()
+                return res.clone().json()
+            })
+            .then(res => {
+                if (res.flag = 0) {
+                    judge_phone.innerHTML = "该手机号已被注册";
+                }
+            })
+            .catch(
+                e => {
+                    return a
+                }
+            )
+    }
+}
 //检验用户名是否重复
+
 //url处填写后端网址
 //点击确定发送数据
 register_submit.addEventListener('click', function () {
     let username = fm_username.value
     let password = fm_password.value
     let phone = phoneNumber.value
+    let params = "username=" + username + "&password=" + password + "&phone=" + phone;
+    console.log(params)
     if (username && password && phone && i == 1) {
-        fetch("http: //118.178.190.150:80/bilibili/register", {
+        console.log(params)
+        fetch("http://118.178.190.150:80/bilibili/register", {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
-                body: JSON.stringify({
-                    "username": username,
-                    "password": password,
-                    "phone": phone,
-                })
+                body: params
             })
-            .then(res => res.json())
+            .then(res => {
+                a = res.clone().arrayBuffer()
+                return res.clone().json()
+            })
             .then(res => {
                 console.log(res)
             })
+            .catch(
+                e => {
+                    return a
+                }
+            )
     }
 })

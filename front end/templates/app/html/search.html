@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索 哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</title>
+    <link rel="shortcut icon" href="../../../static/image/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/base.css">
+    <style>
+        body {
+            margin: 0 auto;
+        }
+
+        a {
+            color: black;
+        }
+
+        .nav {
+            box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+        }
+
+        .search-result-container {
+            min-width: 1000px;
+            min-height: 100%;
+            width: 1398px;
+            overflow: hidden;
+            background-color: #fff;
+            margin-top: 80px;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 50px auto;
+            display: flex;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="internationalHeader">
+        <div class="nav">
+            <div class="nav-content">
+                <div>
+                    <ul class="nav-link">
+                        <li class="nav-link-li nav-link-main">
+                            <a href="homePage.html" class="bilibili-main">
+                                <div class="test bilifont zhuzhan"></div>主站
+                            </a>
+                        </li>
+                        <li class="nav-link-li">番剧</li>
+                        <li class="nav-link-li">游戏中心</li>
+                        <li class="nav-link-li">直播</li>
+                        <li class="nav-link-li">会员购</li>
+                        <li class="nav-link-li">漫画</li>
+                        <li class="nav-link-li">赛事</li>
+                        <li class="bilifont nav-link-li bili-download-app">下载APP</li>
+                    </ul>
+                </div>
+                <div id="nav-search">
+                    <form id="nav-search-form">
+                        <input class="nav-search-keywords" type="text" placeholder="满堂花醉三千客，一剑霜寒十四州。">
+                        <div class="nav-search-btn">
+                            <button class="bilifont nav-search-submit"></button>
+                        </div>
+                    </form>
+                </div>
+                <div id="nav-user-center">
+                    <div class="nav-userCenter-ul" style="display: flex;">
+                        <li class="user-login">
+                            <a href="login.html" class="user-login">
+                                <img class="logout-photo" src="../../../static/image/bili-head-photo.jpg">
+                                登录
+                            </a>
+                        </li>
+                        <li><a href="register.html">注册</a></li>
+                        <li>
+                            <a href="#" target="_blank" class="tougao">
+                                <div class="user-contribute">投稿</div>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="nav-userCenter-ul" style="display: none;">
+                        <li class="user-login">
+                            <a href="user.html" class="user-login">
+                                <img class="logout-photo user-face" src="../../../static/image/bili-head-photo.jpg">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="frame.html" target="_blank">
+                                <div class="user-contribute">投稿</div>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-result-container">
+
+    </div>
+    <script>
+        let btn = document.querySelector('.nav-search-submit');
+
+        function search() {
+            let res;
+            const box = document.querySelector('.nav-search-keywords');
+            let boxValue = box.value;
+            let keywords = 'keywords=' + boxValue;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://118.178.190.150:80/bilibili/search?keywords=j');
+            xhr.send()
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                        res = JSON.parse(xhr.responseText);
+                        console.log(res);
+                        //获取数据渲染
+                    };
+
+                }
+            }
+        }
+
+        btn.addEventListener('click', search)
+    </script>
+</body>
+
+</html>

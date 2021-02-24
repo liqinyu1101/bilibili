@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../../../static/image/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../../../static/css/nav.css">
     <link rel="stylesheet" type="text/css" href="../../../static/css/base.css">
     <style>
@@ -18,6 +18,12 @@
             color: #222;
             font-size: 12px;
             line-height: 1.7em;
+        }
+
+        h3 {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 33px;
         }
 
         .nav {
@@ -150,6 +156,136 @@
             color: #23c9ed;
             vertical-align: baseline;
         }
+
+        .self-statis {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 10px 0;
+            height: 66px;
+        }
+
+        .s-data {
+            display: flex;
+            flex-direction: column;
+            width: 58px;
+            height: 66px;
+            justify-content: center;
+        }
+
+        .n-data-title {
+            line-height: 14px;
+            font-size: 12px;
+            color: #99a2aa
+        }
+
+        .home {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 15px 20px;
+        }
+
+        .my-video-title {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 17px;
+        }
+
+        .setting {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 15px 20px;
+        }
+
+        .setting-title {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 17px;
+        }
+
+        .setting-content {
+            padding: 20px 50px;
+            display: flex;
+        }
+
+        .setting-face {
+            display: flex;
+        }
+
+        .face-choice {
+            width: 180px;
+            height: 180px;
+            overflow: hidden;
+            border: 1px solid #e5e9ef;
+            background-color: #f1f2f6;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .face-choice {
+            width: 180px;
+            height: 180px;
+            text-align: center;
+
+        }
+
+        .fontv-uploading {
+            color: #99a3ad;
+            font-size: 50px;
+            line-height: 180px;
+        }
+
+        .dividing-line {
+            height: 182px;
+            width: 1px;
+            background: #e5e9ef;
+            margin-left: 20px;
+        }
+
+        .now-face-container {
+            margin-left: 40px;
+        }
+
+        .face-img-box {
+            width: 96px;
+            height: 96px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 1px solid #e6eaf0;
+            background-size: cover;
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+
+        .now-title {
+            margin-left: 20px;
+            width: 90px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #99a2aa;
+        }
+
+        .my-video-box {
+            height: 300px;
+            width: 100%;
+        }
+
+        .logout-btn {
+            display: flex;
+            height: 30px;
+            width: 100%;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .logout-btn>img {
+            height: 20px;
+            width: 20px;
+            margin-left: 20px;
+            margin-top: 6px;
+        }
     </style>
 </head>
 
@@ -159,12 +295,14 @@
             <div>
                 <ul class="nav-link">
                     <li class="nav-link-li nav-link-main">
-                        <span class="logo-box">
-                            <img src="../../../static/image/BILIBILI_LOGO.png" class="bilibili-logo">
-                        </span>
-                        <span class="bilibili-main">
-                            <div class="test"></div>主站
-                        </span>
+                        <a href="homePage.html" target="_blank">
+                            <span class="logo-box">
+                                <img src="../../../static/image/BILIBILI_LOGO.png" class="bilibili-logo">
+                            </span>
+                            <span class="bilibili-main">
+                                <div class="test"></div>主站
+                            </span>
+                        </a>
                     </li>
                     <li class="nav-link-li">
                         番剧
@@ -188,10 +326,12 @@
             <div id="nav-user-center">
                 <ul class="nav-userCenter-ul">
                     <li class="user-login">
-                        <img class="logout-photo" src="../../../static/image/bili-head-photo.jpg">
+                        <img class="logout-photo user-face" src="../../../static/image/bili-head-photo.jpg">
                     </li>
                     <li>
-                        <div class="user-contribute">投稿</div>
+                        <a href="frame.html" target="_blank">
+                            <div class="user-contribute">投稿</div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -205,7 +345,7 @@
                     <div class="h-user">
                         <div class="h-info clearfix">
                             <div class="h-face-img">
-                                <img id="user-face" src="../../../static/image/bili-toast.png">
+                                <img id="user-face" class="user-face" src="../../../static/image/bili-toast.png">
                             </div>
                             <div class="h-name">
                                 <span id="name">江陵</span>
@@ -240,7 +380,60 @@
                             </span></div>
                     </div>
                     <div class="self-statis">
+                        <div class="s-data">
+                            <p class="n-data-title">关注数</p>
+                            <p id="follow">0</p>
+                        </div>
+                        <div class="s-data">
+                            <p class="n-data-title">粉丝数</p>
+                            <p id="fans">0</p>
+                        </div>
+                        <div class="s-data">
+                            <p class="n-data-title">获赞数</p>
+                            <p id="likes">0</p>
+                        </div>
+                        <div class="s-data">
+                            <p class="n-data-title">播放数</p>
+                            <p id="play">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="s">
+            <div class="wrapper">
+                <div class="home" id="self-part">
+                    <div class="my-video-title">
+                        <h3>我的视频</h3>
+                    </div>
+                    <div class="my-video-box">
 
+                    </div>
+                </div>
+                <div class="setting" id="self-part" style="display: none;">
+                    <div class="setting-title">
+                        <h3>头像设置</h3>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-face">
+                            <input class="face-upload" type="file" style="display: none;" name="face">
+                            <div class="face-choice">
+                                <i class="fontv fontv-uploading">
+                                    &#58949;
+                                </i>
+                            </div>
+                            <div class="dividing-line"></div>
+                            <div class="now-face-container">
+                                <div class="face-img-box">
+                                    <img class="user-face" src="">
+                                </div>
+                                <div class="now-title">当前头像</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="logout-btn">
+                        <h3>退出登陆</h3>
+                        <img src="../../../static/image/log-out.png">
                     </div>
                 </div>
             </div>
@@ -249,12 +442,100 @@
 
     <script>
         let self_btn = document.querySelectorAll(".self-btn")
+        let self_part = document.querySelectorAll("#self-part")
         for (let i = 0; i < self_btn.length; i++) {
             self_btn[i].addEventListener('click', function () {
-                for (let j = 0; j < self_btn.length; j++)
+                for (let j = 0; j < self_btn.length; j++) {
                     self_btn[j].id = "unchecked"
+                    self_part[j].style.display = "none"
+                }
                 this.id = "checked"
+                self_part[i].style.display = "block"
+
             })
+        }
+        //头像上传
+        let face_choice = document.querySelector(".face-choice")
+        let face_upload = document.querySelector(".face-upload")
+        let cover = null;
+        face_choice.addEventListener('click', function (e) {
+            face_upload.click();
+        })
+        face_upload.addEventListener('change', function () {
+            cover = face_upload.files[0]
+            let fileurl = window.URL.createObjectURL(cover);
+            if (cover.type.indexOf('image') === 0) { //如果是图片  
+                let str = "<img class='preview-pic' width='100%' height='100%' src='" + fileurl + "'>" +
+                    "<div class='cover-upload-tip'><span>封面预览</span></div>"
+                document.querySelector('.face-choice').innerHTML = str;
+            } else {
+                alert('图片格式错误')
+            }
+            let face = new FormData();
+            face.append("face", cover)
+            fetch("http://118.178.190.150:80/bilibili/face/upload", {
+                    method: 'POST',
+                    body: face,
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+        })
+        //4.拖拽实现图片上传
+        face_choice.addEventListener("drop", function (e) {
+            cover = e.dataTransfer.files[0];
+            let fileurl = window.URL.createObjectURL(cover);
+            if (cover.type.indexOf('image') === 0) { //如果是图片  
+                let str = "<img class='preview-pic' width='100%' height='100%' src='" + fileurl + "'>" +
+                    "<div class='cover-upload-tip'><span>封面预览</span></div>"
+                document.querySelector('.face-choice').innerHTML = str;
+            } else {
+                alert('图片格式错误')
+            }
+        })
+        //退出登录
+        let logout = document.querySelector(".logout-btn");
+        logout.addEventListener('click', function () {
+            fetch("http://118.178.190.150:80/bilibili/logout")
+        })
+        window.onload = function () {
+            let username = document.querySelector("#name")
+            let fans = document.querySelector("#fans")
+            let follow = document.querySelector("#follow")
+            let likes = document.querySelector("#likes")
+            fetch("http://118.178.190.150:80/bilibili/user")
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                    let user_face = document.querySelector(".user-face")
+                    username.innerText = res.Username;
+                    document.title = res.Username + "的个人空间"
+                    fans.innerText = res.Fans;
+                    follow.innerText = res.Follows;
+                    let url = "../../../source/face" + res.Id + ".jpg"
+                    if (url) {
+                        for (let i = 0; i < user_face.length; i++) {
+                            user_face[i].src = url
+                        }
+                    }
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
         }
     </script>
 

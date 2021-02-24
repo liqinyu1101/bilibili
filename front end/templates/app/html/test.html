@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        fetch("http://118.178.190.150:80/bilibili/coin", {
+                method: 'POST',
+                body: "bv=" + bv
+            })
+            .then(res => {
+                a = res.clone().arrayBuffer()
+                return res.clone().json()
+            })
+            .then(res => {
+                console.log(res)
+                if (res.message == "successfully") {
+                    alert("投稿成功")
+                    window.location.href = "user.html"
+                }
+            })
+            .catch(
+                e => {
+                    return a
+                }
+            )
+    </script>
+</body>
+
+</html>

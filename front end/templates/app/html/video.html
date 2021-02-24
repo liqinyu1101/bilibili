@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="shortcut icon" href="../../../static/image/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/base.css">
+    <style>
+        body {
+            line-height: 1.5;
+        }
+
+        a {
+            color: rgb(0, 0, 0);
+        }
+
+        .nav {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .v-wrap {
+            width: 988px;
+            max-width: 1984px;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .view-box {
+            height: 96px;
+            padding-top: 27px;
+            box-sizing: border-box;
+            width: 638px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #212121;
+            line-height: 26px;
+            height: 26px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .r-box {
+            width: 320px;
+            margin-left: 30px;
+        }
+
+        #p-wrapper {
+            margin-top: 20px;
+        }
+
+        .player {
+            background-color: black;
+            position: relative;
+            box-sizing: border-box;
+            height: 430px;
+        }
+
+        .player:hover .control {
+            display: block;
+        }
+
+        .player:hover .prog {
+            display: none;
+        }
+
+        .now-video {
+            padding: 40px 10px;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .prog {
+            width: 100%;
+            background-color: #717171;
+            height: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .circle {
+            height: 5px;
+            width: 5px;
+            border-radius: 20px;
+            background-color: #fff;
+        }
+
+        .on-pro {
+            width: 0%;
+            background-color: #1face2;
+            height: 100%;
+        }
+
+        .stop-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            float: right;
+            bottom: 50px;
+            left: 30px;
+        }
+
+        .stop-icon img {
+            width: 100%;
+            height: 100%;
+            opacity: .8;
+        }
+
+        .control {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            width: 618px;
+            height: 25px;
+            display: none;
+        }
+
+        .progress {
+            width: 100%;
+            background-color: #717171;
+            height: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .on-progress {
+            width: 0%;
+            background-color: #1face2;
+            height: 100%;
+        }
+
+        .cotrl-btn-box {
+            margin: 3px 0;
+            font-size: 18px;
+            height: 27px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .video-ctrol {
+            cursor: pointer;
+        }
+
+        .left-box {
+            display: flex;
+            height: 100%;
+        }
+
+        .right-box {
+            display: flex;
+        }
+
+        .video-quanping {
+            margin: 0;
+        }
+
+        .bofang-box {
+            margin-right: 8px;
+            width: 20px;
+        }
+
+        .video-bofang {
+            font-size: 20px;
+        }
+
+        .time-pro {
+            font-weight: 200;
+            font-size: 13px;
+            height: 27px;
+            line-height: 31px;
+            color: rgb(228, 228, 228);
+        }
+
+        .right-box>div {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .control-info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(225, 225, 225, .1);
+        }
+
+        .video-op-box {
+            height: 46px;
+            width: 100%;
+            box-shadow: 0 2px 4px 0px rgba(0, 0, 0, 0.08);
+            padding: 0 8px 0 18px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .danmu-container {
+            background: #f4f4f4;
+            color: #999;
+            height: 30px;
+            display: flex;
+        }
+
+        .danmu-input {
+            border-radius: 2px 0 0 2px;
+            width: 200px;
+            border: 1px solid #e7e7e7;
+            padding: 3px 2px 3px 15px;
+            box-sizing: border-box;
+        }
+
+        .danmu-text {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: transparent;
+        }
+
+        .danmu-send {
+            width: 50px;
+            color: white;
+            line-height: 30px;
+            background-color: #00b5e5;
+            cursor: pointer
+        }
+
+        .caozuo-box {
+            display: flex;
+            font-size: 23px;
+            color: #505050;
+        }
+
+        .caozuo-box>div {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .caozuo-box>div:hover {
+            color: #00a1d6;
+        }
+
+        .caozuo-box>div>span {
+            font-size: 13px;
+        }
+
+        .video-info {
+            margin-top: 20px;
+        }
+
+        .author {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e9f0;
+            margin-top: 40px;
+        }
+
+        .author-face-box {
+            height: 50px;
+            width: 50px;
+            vertical-align: middle;
+            border: 1px solid #C0C0C0;
+            border-radius: 30px;
+            margin-right: 5px;
+            overflow: hidden;
+        }
+
+        .author-follow {
+            background: #00b5e5;
+            border-color: #00b5e5;
+            height: 30px;
+            color: #fff;
+            width: 60px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .author-box {
+            display: flex;
+        }
+
+        .author-name {
+            margin-left: 10px;
+            line-height: 30px;
+            color: #ff85ad !important;
+        }
+
+        .commit-title {
+            border-bottom: 1px solid #e5e9f0;
+        }
+
+        .commit {
+            height: 100px;
+            border-bottom: 1px solid #e5e9f0;
+        }
+
+        .liuyan {
+            margin-top: 20px;
+        }
+
+        .liuyan>h1 {
+            font-weight: 400;
+            font-size: 18px;
+        }
+
+        .input-commit-box {
+            width: 100%;
+            height: 54px;
+            border-radius: 4px 0 0 4px;
+            border: 1px solid #ccd0d7;
+        }
+
+        .input-box-commit-container {
+            background: hsla(0, 0%, 85%, 0);
+            transition: border .3s ease;
+            min-width: 200px;
+            margin: 0 0 0 20px;
+            width: 100%;
+            display: flex;
+        }
+
+        .commit-text {
+            border: 0;
+            outline: 0;
+            font-size: 14px;
+            line-height: 24px;
+            width: 400pxpx;
+            color: #222;
+            height: 100%;
+
+        }
+
+        .commit-send {
+            height: 54px;
+            line-height: 54px;
+            text-align: center;
+            width: 60px;
+            background-color: #00a1d6;
+            border-radius: 0 4px 4px 0;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #ok {
+            color: #00a1d6;
+        }
+
+        .others {
+            width: 100%;
+            height: 40px;
+            font-size: 15px;
+            border-bottom: 1px solid #e5e9f0;
+            padding: 10px 0;
+        }
+
+        .recommend-box {
+            width: 100%;
+        }
+
+        .r-video-box {
+            padding: 10px 0;
+            border-top: 1px solid #e5e9f0;
+            color: #212121;
+            display: flex;
+        }
+
+        .r-video-box>.video-cover>img {
+            width: 180px;
+            height: 100px;
+        }
+
+        .r-video-title {
+            margin-left: 10px;
+            width: 100%;
+        }
+
+        #okk {
+            color: #999;
+            border: 1px solid #e7e7e7;
+            background: #e7e7e7;
+        }
+
+        .speed-control {
+            display: none;
+            position: absolute;
+            width: 30px;
+            height: 100px;
+            right: 68px;
+            bottom: 30px;
+            background-color: rgba(0, 0, 0, .8);
+            color: #fff;
+        }
+
+        .speed-control>div {
+            border-bottom: 1px solid #fff;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+        }
+
+        .speed {
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="nav-content">
+            <div>
+                <ul class="nav-link">
+                    <li class="nav-link-li nav-link-main">
+                        <a href="homePage.html" target="_blank">
+                            <span class="logo-box">
+                                <img src="../../../static/image/BILIBILI_LOGO.png" class="bilibili-logo">
+                            </span>
+                            <span class="bilibili-main">
+                                <div class="test"></div>主站
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-link-li">
+                        番剧
+                    </li>
+                    <li class="nav-link-li">游戏中心</li>
+                    <li class="nav-link-li">直播</li>
+                    <li class="nav-link-li">会员购</li>
+                    <li class="nav-link-li">漫画</li>
+                    <li class="nav-link-li">赛事</li>
+                    <li class="bilifont nav-link-li bili-download-app">下载APP</li>
+                </ul>
+            </div>
+            <div id="nav-search">
+                <form id="nav-search-form">
+                    <input class="nav-search-keywords" type="text" placeholder="只要我够努力，老板就能过上他想要的生活。">
+                    <div class="nav-search-btn">
+                        <button class="bilifont nav-search-submit"></button>
+                    </div>
+                </form>
+            </div>
+            <div id="nav-user-center">
+                <ul class="nav-userCenter-ul">
+                    <li class="user-login">
+                        <img class="logout-photo" src="../../../static/image/bili-head-photo.jpg">
+                    </li>
+                    <li>
+                        <a href="frame.html" target="_blank">
+                            <div class="user-contribute">投稿</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="v-wrap">
+        <div class="view-box">
+            <h1 class="video-title">
+                狗狗狗狗狗狗
+            </h1>
+            <div class="playerWrap" id="p-wrapper">
+                <div class="player-box" aria-label="自定义播放器">
+                    <div class="player">
+                        <video class="now-video">
+
+                        </video>
+                        <div class="stop-icon">
+                            <img src="../../../static/image/播放.png">
+                        </div>
+                        <div class="speed-control">
+                            <div class="speed">2</div>
+                            <div class="speed">1.5</div>
+                            <div class="speed">1</div>
+                            <div class="speed">0.5</div>
+                        </div>
+                        <div class="control" style="color: #fff;">
+                            <div class="progress">
+                                <div class="on-progress"></div>
+                                <div class="circle"></div>
+                            </div>
+                            <div class="cotrl-btn-box">
+                                <div class="left-box">
+                                    <div class="bofang-box">
+                                        <div class="video-ctrol video-bofang">&#59342;</div>
+                                        <div class="video-ctrol video-zanting" style="display: none;">&#59374;</div>
+                                    </div>
+                                    <div class="time-pro"></div>
+                                </div>
+                                <div class="right-box">
+                                    <div class="video-ctrol video-beisu">&#58985;</div>
+                                    <div class="yinliang-box">
+                                        <div class="video-ctrol video-yinliang" ;>&#58994;</div>
+                                        <div class="video-ctrol video-jingyin" style="display: none">&#59032;</div>
+                                    </div>
+                                    <div class="video-ctrol video-quanping">&#58921;</div>
+                                </div>
+                            </div>
+                            <div class="contral-info">
+                            </div>
+                        </div>
+                        <div class="prog">
+                            <div class="on-pro">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-op-box">
+                        <div class="caozuo-box">
+                            <div class="like">
+                                <i class="bcc-iconfont">&#59026;</i>
+                                <span>点赞</span>
+                            </div>
+                            <div class="collect">
+                                <i class="bcc-iconfont ">&#59031;</i>
+                                <span>收藏</span>
+                            </div>
+                            <div class="coin">
+                                <i class="bcc-iconfont">&#59038;</i>
+                                <span>投币</span>
+                            </div>
+                        </div>
+                        <div class="danmu-container">
+                            <div class="danmu-input">
+                                <input class="danmu-text" type="text" placeholder="还没写这个">
+                            </div>
+                            <div class="danmu-send">
+                                发送
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-info">
+                <div class="commit-box">
+                    <div class="commit-title">
+                        简介
+                    </div>
+                    <div class="commit"></div>
+                </div>
+            </div>
+            <div class="liuyan">
+                <h1>评论</h1>
+                <div class="author">
+                    <div class="author-box">
+                        <div class="author-face-box">
+                            <img class="user-face" src="#">
+                        </div>
+                    </div>
+                    <div class="input-box-commit-container">
+                        <div class="input-commit-box">
+                            <textarea class="commit-text" maxlength="100" style="resize: none;" cols="30"
+                                placeholder="填写更全面的相关信息，让更多人找到你的视频吧！">
+                            </textarea>
+
+                        </div>
+                        <div class="commit-send">发送</div>
+                    </div>
+                </div>
+                <div class="liuyan-box">
+
+                </div>
+            </div>
+        </div>
+        <div class="r-box">
+            <div class="author">
+                <div class="author-box">
+                    <div class="author-face-box">
+                        <img class="user-face" src="#">
+                    </div>
+                    <div class="author-name"></div>
+                </div>
+                <div class="author-follow">关注</div>
+            </div>
+            <div class="recomend-box">
+                <h3>推荐视频</h3>
+                <a class="r-video-box" href="video.html?bv=1" target="_blank">
+                    <div class="video-cover">
+                        <img src="../../../static/image/corgi1.jpg" alt="">
+                    </div>
+                    <div class="r-video-title">
+                        柯基
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        //自定义播放器
+        let player = document.querySelector(".player")
+        let video = document.querySelector(".now-video")
+        let stop_icon = document.querySelector(".stop-icon")
+        let bofang = document.querySelector(".video-bofang")
+        let zanting = document.querySelector(".video-zanting")
+        let contrl = document.querySelector(".control")
+        let flag = 1;
+        player.addEventListener('click', function () {
+            if (flag == 0) {
+                video.play();
+                flag = 1;
+                stop_icon.style.display = "none"
+                bofang.style.display = "none"
+                zanting.style.display = "block"
+
+            } else {
+                video.pause()
+                flag = 0;
+                stop_icon.style.display = "block"
+                bofang.style.display = "block"
+                zanting.style.display = "none"
+            }
+        })
+        let on_pro = document.querySelector(".on-pro")
+        let All_pro = document.querySelector(".progress")
+        let on_progress = document.querySelector(".on-progress")
+        let time_pro = document.querySelector(".time-pro")
+        video.ontimeupdate = function () {
+            let dura;
+            if (video.duration / 60 < 10) {
+                if (video.duration % 60 < 10) {
+                    dura = "0" + parseInt(video.duration / 60) + ":0" + parseInt(video.duration % 60)
+                } else {
+                    dura = "0" + parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60)
+                }
+            } else {
+                if (video.duration % 60 < 10) {
+                    dura = parseInt(video.duration / 60) + ":0" + parseInt(video.duration % 60)
+                } else {
+                    dura = parseInt(video.duration / 60) + ":" + parseInt(video.duration % 60)
+                }
+            }
+            time_pro.innerText = "00:00/" + dura
+            let currentTime;
+            if (video.currentTime / 60 < 10) {
+                if (video.currentTime % 60 < 10) {
+                    currentTime = "0" + parseInt(video.currentTime / 60) + ":0" + parseInt(video.currentTime % 60)
+                } else {
+                    currentTime = "0" + parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60)
+                }
+            } else {
+                if (video.currentTime % 60 < 10) {
+                    currentTime = parseInt(video.currentTime / 60) + ":0" + parseInt(video.currentTime % 60)
+                } else {
+                    currentTime = parseInt(video.currentTime / 60) + ":" + parseInt(video.currentTime % 60)
+                }
+            }
+            on_progress.style.width = video.currentTime / video.duration * 100 + "%"
+            on_pro.style.width = video.currentTime / video.duration * 100 + "%"
+            time_pro.innerText = currentTime + "/" + dura
+        }
+        let quanping = document.querySelector(".video-quanping")
+        quanping.onclick = function () {
+            video.requestFullscreen();
+        }
+        //音量控件，因为不知道怎么实现拖拽，只写静音部分
+        //拖拽进度条(没写成功)
+        let slideBtn = document.querySelector(".circle")
+        slideBtn.onmouseup = function (event) {
+            event = event || window.event;
+            let deltaX = event.clientX - slideBtn.offsetLeft;
+            document.onmousemove = function (event) {
+                event = event || window.event;
+                let nowleft = event.clientX - deltaX;
+                if (nowleft < 0) nowleft = 0;
+                if (nowleft > proWrap.clientWidth - slideBtn.offsetWidth)
+                    nowleft = proWrap.clientWidth - slideBtn.offsetWidth;
+                // 滑块
+                on_progress.style.width = parseInt(nowleft / All_pro.style.width * 100) + "%";
+                // 取消默认事件，不选中文字
+                return false;
+            }
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+        //倍速控制
+        let beisu = document.querySelector(".video-beisu")
+        let speed_c = document.querySelector(".speed-control")
+        let speed = document.querySelectorAll(".speed")
+        let c_flag = 0
+        beisu.addEventListener('click', function (e) {
+
+            if (c_flag == 0) {
+                speed_c.style.display = "block";
+                c_flag = 1
+            } else {
+                speed_c.style.display = "none"
+                c_flag = 0
+            }
+            e.stopPropagation()
+        })
+        for (let i = 0; i < speed.length; i++) {
+            speed[i].addEventListener('click', function (e) {
+                video.playbackRate = this.innerText;
+                e.stopPropagation()
+            })
+        }
+        //弹幕部分
+        let danmu = document.querySelector(".danmu-text")
+        let danmu_send = document.querySelector(".danmu-send")
+        //点赞投币收藏一键三连
+        let like = document.querySelector(".like")
+        let coin = document.querySelector(".coin")
+        let collect = document.querySelector(".collect")
+        like.addEventListener('click', likebtn)
+
+        function likebtn() {
+            like.id = "ok"
+            fetch("http://118.178.190.150:80/bilibili/thumbsUp", {
+                    method: 'POST',
+                    body: "bv=" + bv
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+            like.removeEventListener('click', likebtn)
+        }
+        like.addEventListener('click', likebtn)
+
+        function coinbtn() {
+            coin.id = "ok"
+            fetch("http://118.178.190.150:80/bilibili/coin", {
+                    method: 'POST',
+                    body: "bv=" + bv
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+            coin.removeEventListener('click', coinbtn)
+        }
+        coin.addEventListener('click', coinbtn)
+
+        function collectbtn() {
+            collect.id = "ok"
+            fetch("http://118.178.190.150:80/bilibili/coin", {
+                    method: 'POST',
+                    body: "bv=" + bv
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+            collect.removeEventListener('click', collectbtn)
+        }
+        collect.addEventListener('click', collectbtn)
+
+        function allbtn() {
+            like.id = "ok"
+            coin.id = "ok"
+            collect.id = "ok"
+            fetch("http://118.178.190.150:80/bilibili/thumbsUp", {
+                    method: 'POST',
+                    body: "bv=" + bv
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                );
+            fetch("http://118.178.190.150:80/bilibili/collect", {
+                    method: 'POST',
+                    body: "bv=" + bv
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                );
+            fetch("http://118.178.190.150:80/bilibili/coin", {
+                    method: 'POST',
+                    body: "bv=" + bv
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+        }
+        //关注
+        let follow = document.querySelector(".author-follow")
+        let flag1 = 0;
+        follow.addEventListener('click', function () {
+            if (flag1 == 0) {
+                follow.id = "okk"
+                follow.innerText = "已关注"
+                flag1 = 1;
+                //发送关注up的id给
+
+            } else {
+                follow.id = ""
+                follow.innerText = "关注"
+                flag1 = 0
+                //发送关注up的id
+            }
+        })
+        //长按一键三连
+        function getTime() {
+            const now = new Date().getTime();
+        }
+        like.addEventListener("mousedown", function () {
+            startTime = new Date().getTime(); //获取mousedown触发时间
+            timer = setTimeout(allbtn, 3000); //设置定时器
+        })
+
+        like.addEventListener("mouseup", function () {
+            const now = new Date().getTime(); //获取mouseup触发时间
+            if (now - startTime < 3000) { //点按仅触发点赞
+                clearTimeout(timer);
+            } else { //长按时间不足，不触发任何操作
+
+            }
+        });
+        collect.addEventListener("mousedown", function () {
+            startTime = new Date().getTime(); //获取mousedown触发时间
+            timer = setTimeout(allbtn, 3000); //设置定时器
+        })
+
+        collect.addEventListener("mouseup", function () {
+            const now = new Date().getTime(); //获取mouseup触发时间
+            if (now - startTime < 3000) { //点按仅触发点赞
+                clearTimeout(timer);
+            } else { //长按时间不足，不触发任何操作
+
+            }
+        });
+        coin.addEventListener("mousedown", function () {
+            startTime = new Date().getTime(); //获取mousedown触发时间
+            timer = setTimeout(allbtn, 3000); //设置定时器
+        })
+
+        coin.addEventListener("mouseup", function () {
+            const now = new Date().getTime(); //获取mouseup触发时间
+            if (now - startTime < 3000) { //点按仅触发点赞
+                clearTimeout(timer);
+            } else { //长按时间不足，不触发任何操作
+
+            }
+        });
+        //加载视频
+        window.onload = function () {
+            bv = window.location.href.split("=")[1];
+            let url = "../../../static/video/corgi" + bv + ".mp4"
+            let str = "<source src=" + url + " type='video/mp4'>"
+            video.innerHTML = str;
+            let video_title = document.querySelector(".video-title")
+            //获取视频信息
+            fetch("http://118.178.190.150:80/bilibili/video/recommend", {
+                    method: 'POST',
+                    body: "number=16"
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    info = res
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+            //加载评论
+            fetch("http://118.178.190.150:80/bilibili/view")
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                }).then(res => {
+                    console.log(res)
+                    //对res处理
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+
+        }
+        //留言板
+        let comment_text = document.querySelector(".commit-text")
+        let comment_send = document.querySelector(".commit-send")
+        let liuyan_box = document.querySelector(".liuyan-box")
+        comment_send.addEventListener('click', function () {
+            let liuyan = document.createElement("div")
+            liuyan.className = "others"
+            liuyan.innerText = comment_text.value;
+            liuyan_box.appendChild(liuyan)
+            let pa = "content=" + comment_text.value + "&bv=" + bv
+            //评论发送给后端
+            fetch("http://118.178.190.150:80/bilibili/comment", {
+                    method: 'POST',
+                    body: pa
+                })
+                .then(res => {
+                    a = res.clone().arrayBuffer()
+                    return res.clone().json()
+                })
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(
+                    e => {
+                        return a
+                    }
+                )
+        })
+    </script>
+</body>
+
+</html>

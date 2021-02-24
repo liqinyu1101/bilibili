@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #222;
+}
 
 i,
 em {
@@ -82,6 +88,11 @@ textarea {
     src: url(../font/fontv.ttf) format('truetype')
 }
 
+@font-face {
+    font-family: iconfont;
+    src: url(../font/video.ttf);
+}
+
 .bilifont {
     font-family: "bilifont" !important;
 }
@@ -108,5 +119,10 @@ textarea {
 
 .fontv {
     font-family: "fontv" !important;
+    font-style: normal;
+}
+
+.video-ctrol {
+    font-family: "iconfont" !important;
     font-style: normal;
 }
